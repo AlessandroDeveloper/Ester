@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 corintios 13:7 </title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: black;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .carta {
+            width: 90%;
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            text-align: justify;
+            margin-top: 10%;
+        }
+        .carta p {
+            margin: 0;
+            font-size: 1rem;
+        }
+        .carta-header {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .carta-footer {
+            text-align: right;
+            margin-top: 20px;
+        }
+        
+        .chuva {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .gota {
+            position: absolute;
+            bottom: 100%;
+            width: 1px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.5);
+            animation: descer 1s linear infinite;
+        }
+        @keyframes descer {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+         
+        /* Estilos Responsivos */
+        @media (max-width: 1024px) {
+            .carta {
+                max-width: 80%;
+                padding: 20px;
+                margin-top: 15%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carta {
+                max-width: 90%;
+                padding: 15px;
+                margin-top: 20%;
+            }
+            .carta p {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carta {
+                padding: 15px;
+                max-width: 95%;
+                margin-top: 25%;
+            }
+            .carta p {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="carta">
+        <div class="carta-header">
+            <h2></h2>
+        </div>
+        <p>Eu não vou desistir, irei esperar e continuarei a pedir novamente.</p><p><br>EU TE AMO ESTER.<br><br></p>
+            <p>Ainda vamos nos casar<br><hr></p>
+            <p>At.te Alessandro</p>
+        </div>
+    </div>
+    
+    <div class="chuva"></div>
+
+    <script>
+        const chuvaContainer = document.querySelector('.chuva');
+
+        function criarGotas() {
+            for (let i = 0; i < 100; i++) {
+                const gota = document.createElement('div');
+                gota.classList.add('gota');
+                gota.style.left = Math.random() * 100 + 'vw';
+                gota.style.animationDuration = 0.5 + Math.random() * 0.5 + 's';
+                gota.style.opacity = Math.random();
+                chuvaContainer.appendChild(gota);
+            }
+        }
+
+        criarGotas();
+        let startY;
+
+        window.addEventListener('touchstart', function(event) {
+            startY = event.touches[0].clientY;
+        });
+
+        window.addEventListener('touchmove', function(event) {
+            if (!startY) return;
+
+            let currentY = event.touches[0].clientY;
+            let diffY = startY - currentY;
+
+            window.scrollBy(0, diffY);
+
+            startY = currentY; // Atualiza a posição para manter o scroll suave
+        });
+
+        window.addEventListener('touchend', function() {
+            startY = null; // Reseta a posição inicial quando o toque termina
+        });
+        
+    </script>
+</body>
+</html>
